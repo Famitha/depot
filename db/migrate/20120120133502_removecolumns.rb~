@@ -1,0 +1,11 @@
+class Removecolumns < ActiveRecord::Migration
+  def up
+    remove_column :users, :email
+    remove_column :orders, :user_id
+  end
+
+  def down
+    add_column :users, :email, :string
+    add_column :orders, :user_id, :integer
+  end
+end

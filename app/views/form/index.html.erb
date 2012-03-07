@@ -1,0 +1,47 @@
+<%=form_for :model do |f|%>
+<p>
+<%=f.label :input%>
+<%= f.text_field :input, :placeholder => 'enter here..' %>
+</p>
+<p>
+<%= f.label :address, :style => 'float: left' %>
+<%=f.text_area  :address, :row=>4, :col => 40, :placeholder => 'enter ur address'%>
+</p>
+<p>
+<%=f.label :color%>:
+<%=f.radio_button :color, 'red' %>
+<%=f.label :red%>
+<%=f.radio_button :color, 'blue'%>
+<%=f.label :blue%>
+<%=f.radio_button :color, 'green'%>
+<%=f.label :green%>
+</p>
+<p>
+<%=f.label 'condiment' %>:
+<%=f.check_box :ketchup %>
+<%=f.label :ketchup %>
+<%=f.check_box :mustard %>
+<%=f.label :mustard %>
+<%=f.check_box :mayonnaise %>
+<%=f.label :mayonnaise %>
+</p>
+
+<p>
+<%=f.label :priority%>:
+<%=f.select :priority, (1..20)%>
+</p>
+<p>
+<%=f.label :date%>:
+<%=f.date_select :start%>
+</p>
+<p>
+<%=f.label :alarm%>:
+<%=f.time_select :alarm%>
+</p>
+<p>
+<%=f.label :search%>
+<%=f.search_field :search%>
+</p>
+
+
+<%end%>

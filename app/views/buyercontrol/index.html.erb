@@ -1,0 +1,28 @@
+<h1>Listing orders</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Email</th>
+    <th>Pay type</th>
+    <th></th>
+   
+  </tr>
+
+<% @order.each do |ord| %>
+  <tr>
+    <td><%= ord.name %></td>
+    <td><%= ord.address %></td>
+    <td><%= ord.email %></td>
+    <td><%= ord.pay_type %></td>
+    <td><%= link_to 'Show', buyercontrol_show_path(:id => ord)%></td>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Order', store_path %>
+<p><%= will_paginate @order %></p>

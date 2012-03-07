@@ -1,0 +1,34 @@
+
+Hello!<br />
+Time remaining: <span id="CountDownPanel"></span>
+<%if notice%>
+<p><%=notice%></p>
+<%end%>
+<%=form_for (@paypal) do |f| %>
+<% if @paypal.errors.any? %>
+<h2><%= pluralize(@paypal.errors.count, "error" ) %>prohibited this order from being saved:</h2>
+<ul>
+<% @paypal.errors.full_messages.each do |msg| %>
+<li><%= msg %></li>
+<% end %>
+</ul>
+
+<% end %>
+ Type of Card*
+<div><%= f.select :card_type, Paypal::TYPE %></div><br><br>
+<div><p><%=f.label :card_no%>
+<%=f.text_field :card_no,   :placeholder => "enter card number" %></p></div>
+<div><p><%=f.label :card_verification%>
+<%=f.text_field :card_verification,   :placeholder => "enter card verification" %></p></div>
+<div><p><%=f.label :expiry_year%>
+<%=f.text_field :expiry_year,   :placeholder => "enter expiry year" %></p></div>
+<div><p><%=f.label :expiry_month%>
+<%=f.text_field :expiry_month,   :placeholder => "enter expiry month" %></p></div>
+<div><p><%=f.label :fname%>
+<%=f.text_field :fname,   :placeholder => "enter your first name" %></p></div>
+<div><p><%=f.label :lname%>
+<%=f.text_field :lname,   :placeholder => "enter your last name" %></p></div>
+<div><p><%=f.label :amount%>
+<%=f.text_field :amount,   :value => session[:amt], :readonly => true %></p></div>
+<%=f.submit %>
+<%end%>

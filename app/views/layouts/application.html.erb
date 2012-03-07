@@ -1,14 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Depot</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
+  <title>Pragprog Books Online Store</title>
+  <%= stylesheet_link_tag    "scaffold" %>
+  <%= stylesheet_link_tag    "depot", :media => "all" %>
+  <%= javascript_include_tag   "application" %>
+  <script type="text/javascript" src="/assets/CountDown.js"></script>
   <%= csrf_meta_tags %>
+  <script type "text/javascript" src="/assets/jquery-1.7.1.js"></script>
+  <script type "text/javascript" >
+  $(document).ready(function()
+  {
+  function aniDiv(){
+
+    $("#depot").animate({width:"50%"},"slow");
+    $("#depot").animate({width:"100%"},"slow", aniDiv);
+    $("#depot1").animate({width:"50%"},"slow");
+    $("#depot1").animate({width:"100%"},"slow", aniDiv);
+    }
+    aniDiv();
+    $(":animated").css("background-color", "pink");
+  });
+  </script>
+  <script type="text/javascript">
+window.onload=WindowLoad;
+function WindowLoad(event) {
+	ActivateCountDown("CountDownPanel", 100);
+}
+</script>
+<style type="text/css" >
+#CountDownPanel {
+color: blue; 
+background-color: yellow; font-size: 18px;}
+</style>
 </head>
-<body>
 
+
+<body id="store">
+<div id="banner">
+
+<%=image_tag("logo.png")%>
+<marquee><%=@page_title || "Programatic Bookshelf"%></marquee>
+</div>
+
+
+<div id="columns">
+
+
+<div id="side">
+<% if @cart %>
+<%= hidden_div_if(@cart.line_items.empty?, :id => "cart" ) do %>
+<%= render @cart %>
+<% end %>
+<%end%>
+<% unless session[:user_id] %>
+<%= link_to "Admin?", sessions_new_path%><br/>
+<marquee><h6 id="depot"> Wellcome to online shopping </h6></marquee>
+<%end%>
+
+<% if session[:user_id] %>
+
+
+<br />
+<%= link_to 'Orders', orders_path %><br />
+<%= link_to 'Products', products_path %><br />
+<%= link_to 'Users', users_path %><br />
+<%= button_to 'Logout', logout_path, :method => :delete %>
+<br />
+
+<marquee><h6 id="depot1"> Thanks for your valuable time</h6></marquee>
+
+
+<%end%>
+</div>
+
+<div id="main">
 <%= yield %>
+</div>
 
+</div>
 </body>
 </html>

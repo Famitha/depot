@@ -1,0 +1,20 @@
+<%=form_for (@paypal) do |f| %>
+
+ Type of Card*
+<div><%= f.select :card_type, Paytable::TYPE %></div><br><br>
+<p><%=f.label :card_no%>
+<%=f.text_field :card_no,   :placeholder => "enter card number" %></p>
+<p><%=f.label :card_verification%>
+<%=f.text_field :card_verification,   :placeholder => "enter card verification" %></p>
+<p><%=f.label :expiry_year%>
+<%=f.text_field :expiry_year,   :placeholder => "enter expiry year" %></p>
+<p><%=f.label :expiry_month%>
+<%=f.text_field :expiry_month,   :placeholder => "enter expiry month" %></p>
+<p><%=f.label :fname%>
+<%=f.text_field :fname,   :placeholder => "enter your first name" %></p>
+<p><%=f.label :lname%>
+<%=f.text_field :lname,   :placeholder => "enter your last name" %></p>
+<p><%=f.label :amount%>
+<%=f.text_field :amount,   :value => session[:amt], :readonly => true %></p>
+<%=f.submit %>
+<%end%>

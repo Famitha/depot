@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @order.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @order.address %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @order.email %>
+</p>
+
+<p>
+  <b>Pay type:</b>
+  <%= @order.pay_type %>
+</p>
+
+<%= link_to 'Edit',  buyercontrol_edit_path(:id => @order) %>
+ <%= link_to 'Back', buyercontrol_index_path %>

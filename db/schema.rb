@@ -10,13 +10,75 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120112083120) do
+ActiveRecord::Schema.define(:version => 20120228052908) do
+
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "line_items", :force => true do |t|
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "quantity",   :default => 1
+    t.integer  "order_id"
+    t.float    "price"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.string   "email"
+    t.string   "pay_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "paypals", :force => true do |t|
+    t.string   "card_type"
+    t.integer  "card_no"
+    t.integer  "card_verification"
+    t.string   "expiry_year"
+    t.string   "expiry_month"
+    t.string   "fname"
+    t.string   "lname"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pictures", :force => true do |t|
+    t.string "comment"
+    t.string "name"
+    t.string "content_type"
+    t.binary "data",         :limit => 16777215
+  end
 
   create_table "products", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.string   "image_url"
     t.decimal  "price",       :precision => 8, :scale => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "simple_captcha_data", :force => true do |t|
+    t.string   "key",        :limit => 40
+    t.string   "value",      :limit => 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "simple_captcha_data", ["key"], :name => "idx_key"
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "hashed_password"
+    t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

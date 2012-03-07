@@ -1,0 +1,34 @@
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<div id="google_translate_element"></div>
+<script>
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en'
+  }, 'google_translate_element');
+}
+</script>
+
+
+
+<%if notice%>
+<p id="notice"><%=notice%></p>
+<%end%>
+<h1>Your Pragmatic Catalog
+</h1>
+<%@products.each do |product| %>
+<div  class="entry">
+<%=image_tag(product.image_url)%>
+<h3>
+<%=product.title%>
+</h3>
+<h5>
+<%=sanitize product.description%>
+</h5>
+<div class="price_line">
+<span class="price"><%=number_to_currency(product.price)%></span>
+<%= button_to 'Add to Cart', line_items_path(:product_id => product), :remote => true %>
+
+
+</div>
+</div>
+<%end%>

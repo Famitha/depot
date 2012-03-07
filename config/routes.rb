@@ -1,5 +1,45 @@
 Depot::Application.routes.draw do
-  resources :products
+  post "products/newuser"
+  get "form/index"
+  get   "buyercontrol/index"
+  get "buyercontrol/show"
+  get "buyercontrol/edit"
+  get "uploadcontroller/get"
+get "uploadcontroller/save"
+  get 'admin' => 'admin#index'
+  get "orders/feed"
+controller :sessions do
+get 'login' => :new
+post 'login' => :create
+delete 'logout' => :destroy
+end
+
+
+  get "sessions/new"
+
+ get "sessions/create"
+
+  get "sessions/destroy"
+ #post "paypalcontrol/pay", :as =>'paypalcontrolpay'
+ #post "paypalcontrol/payment"
+  resources :users
+
+  resources :orders
+
+  resources :line_items
+
+  resources :carts
+ resources :paypals
+ resources :products do
+get :who_bought, :on => :member
+end
+ #get 'store' => 'store#index' 
+ #root :to => 'users#depotlogin', :as => 'userlogin'
+root :to => 'store#index', :as =>'store'
+  
+  
+  
+#get 'sessions#login', :as => 'sessions'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -56,5 +96,5 @@ Depot::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  match ':controller(/:action(/:id(.:format)))'
 end
