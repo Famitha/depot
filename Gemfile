@@ -23,7 +23,7 @@ gem 'jquery-rails'
 gem 'will_paginate' , '>= 3.0.pre'
 gem 'paperclip'
 gem 'shoulda'
-
+gem 'pg'
 # RSPEC test
 group :test, :development do
   gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
