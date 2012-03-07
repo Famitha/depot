@@ -4,9 +4,9 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 development:
-  adapter: postgresql
+  adapter: mysql
   database: depotdb_dev
-  username: postgres
+  username: root
   password: root
   pool: 5
   timeout: 5000
@@ -15,17 +15,17 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test: &test
-  adapter: postgresql
+  adapter: mysql
   database: depotdb_test
-  username: postgres
+  username: root
   password: root
   pool: 5
   timeout: 5000
 
 production:
-  adapter: postgresql
+  adapter: mysql
   database: depotdb_prod
-  username: postgres
+  username: root
   password: root
   pool: 5
   timeout: 5000
