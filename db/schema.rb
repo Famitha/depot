@@ -50,13 +50,6 @@ ActiveRecord::Schema.define(:version => 20120228052908) do
     t.datetime "updated_at"
   end
 
-  create_table "pictures", :force => true do |t|
-    t.string "comment"
-    t.string "name"
-    t.string "content_type"
-    t.binary "data", :limit => 16777215
-  end
-
   create_table "products", :force => true do |t|
     t.string   "title"
     t.text     "description"
