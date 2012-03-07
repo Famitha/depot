@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20120228052908) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
   end
 
 end
