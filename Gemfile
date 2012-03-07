@@ -21,7 +21,7 @@ end
 gem 'activemerchant'
 gem 'jquery-rails'
 gem 'will_paginate' , '>= 3.0.pre'
-gem 'paperclip'
+#gem 'paperclip'
 gem 'shoulda'
 gem 'pg'
 # RSPEC test
